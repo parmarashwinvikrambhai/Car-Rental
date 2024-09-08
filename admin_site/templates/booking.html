@@ -1,0 +1,100 @@
+{% extends 'admin_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+<!-- START: Main Content-->
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Breadcrumbs-->
+        <div class="row ">
+            <div class="col-12  align-self-center">
+                <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                    <div class="w-sm-100 mr-auto"><h4 class="mb-0">Booking</h4></div>
+
+                    <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Table</li>
+                        <li class="breadcrumb-item active"><a href="#">Booking table</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- END: Breadcrumbs-->
+
+        <!-- START: Card Data-->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header  justify-content-between align-items-center">
+                        <h4 class="card-title">Booking Table</h4>
+                    </div>
+                    <!-- <a href="#"  class="btn btn-primary" style="width: 27%;margin: 8px;margin-left: 2%;" >Insert Data</a> -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display table dataTable table-striped table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Booking Id</th>
+                                        <th>From Date</th>
+                                        <th>Return Date</th>
+                                        <th>Pickup Locaton</th>
+                                        <th>Drop Location</th>
+                                        <th>Payment Status</th>
+                                        <th>Amount</th>
+                                        <th>User Id</th>
+                                        <th>Car Id</th>
+                                        <th>View </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in booking %}
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ i.booking_id }}</td>
+                                        <td>{{ i.from_date}}</td>
+                                        <td>{{i.return_date}} </td>
+                                        <td>{{ i.pickup_location.street }} - {{ i.pickup_location.area }} - {{ i.pickup_location.city }}</td>
+                                        <td>{{ i.drop_location.street }} - {{ i.drop_location.area }} - {{ i.drop_location.city }}</td>
+<!--                                        <td>{{ i.payment_status }}</td>-->
+                                        {% if i.payment_status == 0 %}
+                                            <td style="background: #49493e7c;" ><lebal > Not Pay</lebal></td>
+                                        {% elif i.payment_status == 1%}
+                                            <td style="background: #25c625a6;"> <label >Payment Done</label></td>
+                                        {% elif i.payment_status == 2 %}
+                                        <td style="background: #df2424b3;"> <label > Booking Cancel</label></td>
+                                        {% endif %}
+
+                                        <td>{{ i.amount }}</td>
+                                        <td>{{ i.users_id.first_name }} {{ i.users_id.last_name }}</td>
+                                        <td>{{i.car_id.model_name}} - {{i.car_id.reg_number}}</td>
+                                        <td> <a href="/order_details/{{i.booking_id}}/"> <label> View </label> </a> </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Dl number</th>
+                                        <th>Dl Image</th>
+                                        <th>First Name</th>
+                                        <th>last Name</th>
+                                        <th>E-mail</th>
+                                        <th>Address</th>
+                                        <th>Phone number</th>
+                                    </tr>
+                                </tfoot> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END: Card DATA-->
+    </div>
+</main>
+<!-- END: Content-->
+
+{% endblock %}

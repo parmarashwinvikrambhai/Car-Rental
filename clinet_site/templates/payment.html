@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+	<!-- Favicons -->
+    <link rel="icon" type="image/png" href="{% static 'icon/car-rent.png' %}" sizes="32x32">
+	<link rel="apple-touch-icon" href="{% static 'icon/car-rent.png' %}">
+
+	<meta name="description" content="Car rental HTML Template">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>Self Drive Car Rentals(HireCar)</title>
+
+</head>
+<body>
+	<!-- main content -->
+	<main class="main main--sign" data-bg="img/bg/bg.png">
+		<!-- registration form -->
+		<div class="sign">
+			<div class="sign__content">
+				<form action="/client/paymentMOdule/{{bookingID}}/" id="form" method="post"  class="sign__form">
+					{% csrf_token %}
+                    <!-- <a href="index.html" class="sign__logo">
+						<img src="img/logo.svg" alt="">
+					</a> -->
+
+                    <div class="sign__logo">
+                        <h1>Payment</h1>
+                    </div>
+					<div class="sign__group">
+                        <label style="margin-left: 5px;">Card Holder Name</label>
+						<input type="text" class="sign__input" placeholder="Enter Card Holder Name"id="cardholdername" onkeyup="checkCardHolderName()" required>
+                        <i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+
+					<div class="sign__group" style="margin-top: 15px;">
+                        <label style="margin-left: 5px;">Card Number</label>
+						<input type="number" class="sign__input" placeholder="Enter Card Number" id="cardnumber" onkeyup="checkCardNumber()" required>
+                        <i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+
+                    <div class="sign__group" style="margin-top: 15px;">
+                        <label style="margin-left: 5px;">Card Expiry Date</label>
+                        <div class="sign__group-div">
+                            <select id="monthexp" name="months" class="sign__input" required>
+                                <option value="month" selected>Month</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            
+                            <select id="yearexp" name="years" class="sign__input" required>
+                                <option value="year">Year</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                                <option value="2034">2034</option>
+                                <option value="2035">2035</option>
+                                <option value="2036">2036</option>
+                                <option value="2037">2037</option>
+                                <option value="2038">2038</option>
+                                <option value="2039">2039</option>
+                                <option value="2040">2040</option>
+                                <option value="2041">2041</option>
+                                <option value="2042">2042</option>
+                                <option value="2043">2043</option>
+                                <option value="2044">2044</option>
+                                <option value="2045">2045</option>
+                                <option value="2046">2046</option>
+                                <option value="2047">2047</option>
+                                <option value="2048">2048</option>
+                                <option value="2049">2049</option>
+                                <option value="2050">2050</option>
+                            </select>
+                        
+                            <input type="password" name="cvvnumber" class="sign__input" placeholder="CVV" maxlength=" 3" required>
+                    </div>
+
+					<div class="sign__group" style="margin-top: 15px;">
+                        <label style="margin-left: 5px;">Amount</label>
+                        <input type="number" class="sign__input" id="paymentamount" value="{{Amount}}" readonly placeholder="Amount" disabled>
+					</div>
+
+				
+					
+					<input type="submit" class="sign__btn" value="Submit"></button>
+
+				</form>
+			</div>
+		</div>
+		<!-- end registration form -->
+	</main>
+	<!-- end main content -->
+
+	<!-- JS -->
+	<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js/splide.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/select2.min.js' %}"></script>
+	<script src="{% static 'js/smooth-scrollbar.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/custom2.js' %}"></script>
+</body>
+
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+</html>

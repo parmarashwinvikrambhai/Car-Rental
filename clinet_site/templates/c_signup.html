@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	 crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="{% static 'icon/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="apple-touch-icon" href="{% static 'icon/favicon-32x32.png' %}">
+
+	<meta name="description" content="Car rental HTML Template">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>Self Drive Car Rentals(HireCar)</title>
+
+</head>
+<body>
+	<!-- main content -->
+	<main class="main main--sign" data-bg="{% static 'img/bg/bg.png'%}">
+		<!-- registration form -->
+		<div class="sign">
+			<div class="sign__content">
+				<form action="" method="post" id="form" class="sign__form" enctype="multipart/form-data">
+					{% csrf_token %}
+					<a href="index.html"  class="sign__logo">
+						<span style="font-size: xx-large; color: #189cf4;">
+							H<span style="color: black;">ire</span>
+						</span> 
+						<span style="font-size: xx-large;color: #189cf4;">
+							C<span style="color: black;" >ar</span>
+						</span> 
+						<!-- <img src="{% static 'img/logo.svg'%}" alt=""> -->
+					</a>
+
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.dl_number.errors }}</label>
+						<input type="text" class="sign__input" name="dl_number" id="userDL" title="Enter Driving Licence Number" placeholder="Driving Licence Number" onkeyup="checkUserDL()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+					<!-- <div class="sign__group" style="justify-content: center;">
+						<img src="" class="sign__input" style="width: 100%;padding: 10px;height: 100%;" alt="" name="output" id="output"/>
+					</div> -->
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.first_name.errors }}</label>
+						<input type="text" class="sign__input" placeholder="First Name" name="first_name"  id="fullname" title="Enter FirstName" onkeyup="checkFirstName()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.last_name.errors }}</label>
+						<input type="text" class="sign__input" placeholder="Last Name" name="last_name" id="lastname" title="Enter LastName" onkeyup="checkLastName()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.users_email.errors }}</label>
+						
+						<input type="email" class="sign__input" placeholder="Email Address" name="users_email" id="email" title="Enter Email" onkeyup="checkUserEmail()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.users_password.errors }}</label>
+						<input type="password" class="sign__input" placeholder="Password" name="users_password" id="password" title="Enter Password" onkeyup="checkUserPassword()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.users_addres.errors }}</label>
+						<textarea class="sign__input" rows="7" placeholder="Address" name="users_addres" id="address" title="Enter Address" style="padding-top:10px; height: 130px;" onkeyup="checkAddress()" autocomplete="off" required></textarea>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+					
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.users_phone.errors }}</label>
+						<input type="number" class="sign__input" placeholder="Phone Number" name="users_phone" id="phoneno" title="Enter Phone Number" onkeyup="checkPhone()" autocomplete="off"  maxlength="10" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+					</div>
+
+					<div class="sign__group">
+						<label style="color : red;">{{ froms.dl_image.errors }}</label>
+						<input type="file" name="dl_image"  title="Select Driving Licence Image" id="dlimage" class="sign__input" accept="image/jpg, image/jped, image/png" placeholder="dl_image" style=" border: 1px solid #888; display: inline-block;padding: 6px 22px; cursor: pointer;" onchange="checkImageType()" autocomplete="off" required>
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error Message</small>
+						<label for="dl_image" style="margin-left: 5px; margin-top: 2px;">Upload Driving Licence Image</label>
+					</div>
+
+					{% for data in messages%}
+						 <p style="color : red;">
+						  {{ data }}
+						 </p>
+					 {% endfor %}
+
+					<button class="sign__btn" type="submit"><span>Sign up</span></button>
+
+					<span class="sign__delimiter">OR</span>
+					
+					
+
+					<span class="sign__text" style="text-align: center;">Already have an account? <a href="/client/user_signin/">Sign in</a></span>
+				</form>
+			</div>
+		</div>
+		<!-- end registration form -->
+	</main>
+	<!-- end main content -->
+
+	<!-- JS -->
+	<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js/splide.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/select2.min.js' %}"></script>
+	<script src="{% static 'js/smooth-scrollbar.js'%}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+	<script>
+		function loadfile(event){
+		  document.getElementById('output').src=URL.createObjectURL(event.target.files[0])
+		}
+
+	  </script>
+</body>
+
+
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+</html>

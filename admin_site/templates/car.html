@@ -1,0 +1,114 @@
+{% extends 'admin_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+<!-- START: Main Content-->
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Breadcrumbs-->
+        <div class="row ">
+            <div class="col-12  align-self-center">
+                <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                    <div class="w-sm-100 mr-auto"><h4 class="mb-0"> Car Datatable</h4></div>
+
+                    <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Table</li>
+                        <li class="breadcrumb-item active"><a href="#">car table</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- END: Breadcrumbs-->
+
+        <!-- START: Card Data-->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header  justify-content-between align-items-center">
+                        <h4 class="card-title">Car Tabel</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display table dataTable table-striped table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Car_Id</th>
+                                        <th>Reg_number</th>
+                                        <th>Model_name</th>
+                                        <th>Car_Img</th>
+                                        <th>Model_Year</th>
+                                        <th>Availabel_Flag</th>
+                                        <th>Mileage</th>
+                                        <th>Fuel_Type</th>
+                                        <th>NO_seat</th>
+                                        <th>Cost</th>
+                                        <th>Car_type</th>
+                                        <th>Transmission</th>
+                                        <th>Company Name</th>
+                                        <th> Refund Amt </th>
+                                        <th> Pick & Drop Charge </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for c in car %}
+                                    <tr>
+                                        <td>{{ c.car_id }}</td>
+                                        <td>{{ c.reg_number }}</td>
+                                        <td>{{c.model_name}}</td>
+                                        <td><img src="{% static '/image/' %}{{c.img_car}}" width="238px"/> </td>
+                                        <td>{{ c.model_year }}</td>
+                                        <td>{%if c.available_flag == 0 %}
+                                            <span style="color: #d71a1ab8;" >Not Available</span>
+                                            {% elif c.available_flag == 1 %}
+                                            <span style="color: #42d71ab8;"> Available</span> 
+                                            {% endif %}
+                                            
+                                        </td>
+                                        <td>{{ c.mileage}}</td>
+                                        <td>{{ c.fuels_type }}</td>
+                                        <td>{{ c.no_seats }}</td>
+                                        <td>{{ c.cost}}</td>
+                                        <td>{{ c.car_type}}</td>
+                                        <td>{{ c.transmission}}</td>
+                                        <td>{{ c.company_id.company_name }}</td>
+                                        <td>{{ c.refund_amt }}</td>
+                                        <td>{{ c.pick_drop_charge}}</td>
+                                        <td>
+                                            <a href="/det_car/{{c.car_id}}"><img src="{% static '/image/delete1.png'%}" height="20"></a>
+                                            <a href="/edit_car/{{c.car_id}}"><img src="{% static '/image/edit.png'%}" height="20"></a>
+                                        </td>
+
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Dl number</th>
+                                        <th>Dl Image</th>
+                                        <th>First Name</th>
+                                        <th>last Name</th>
+                                        <th>E-mail</th>
+                                        <th>Address</th>
+                                        <th>Phone number</th>
+                                    </tr>
+                                </tfoot> -->
+                            </table>
+                            <a href="/car_i/"  class="btn btn-primary" style="width: 10%;margin: 8px;margin-left: 2%;" >Insert Data</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END: Card DATA-->
+    </div>
+</main>
+<!-- END: Content-->
+
+{% endblock %}

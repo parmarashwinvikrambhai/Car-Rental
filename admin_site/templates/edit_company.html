@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <!-- START: Head-->
+
+<!-- Mirrored from html.designstream.co.in/pick/html/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Jan 2021 07:13:20 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <title>CarRental</title>
+        <link rel="shortcut icon" href="{% static 'dist/images/favicon.ico' %}" />
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <!-- START: Template CSS-->
+        <link rel="stylesheet" href="{% static 'dist/vendors/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/jquery-ui/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/jquery-ui/jquery-ui.theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/simple-line-icons/css/simple-line-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/flags-icon/css/flag-icon.min.css' %}">
+
+        <!-- END Template CSS-->
+
+        <!-- START: Custom CSS-->
+        <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
+        <!-- END: Custom CSS-->
+    </head>
+    <!-- END Head-->
+
+    <!-- START: Body-->
+    <body id="main-container" class="default">
+        <!-- START: Pre Loader-->
+        <div class="se-pre-con">
+            <div class="loader"></div>
+        </div>
+        <!-- END: Pre Loader-->
+
+        <!-- START: Header-->
+        <div id="header-fix" class="header fixed-top">
+            <div class="site-width">
+                <nav class="navbar navbar-expand-lg  p-0">
+                    <div class="navbar-header  h-100 h4 mb-0 align-self-center logo-bar text-left">
+                        <a href="index.html" class="horizontal-logo text-left">
+                            <svg height="20pt" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512" width="20pt" xmlns="http://www.w3.org/2000/svg">
+<!--                            <g transform="matrix(.1 0 0 -.1 0 512)" fill="#1e3d73">-->
+<!--                            <path d="m1450 4481-1105-638v-1283-1283l1106-638c1033-597 1139-654 1139-619 0 4-385 674-855 1489-470 814-855 1484-855 1488 0 8 1303 763 1418 822 175 89 413 166 585 190 114 16 299 13 408-5 100-17 231-60 314-102 310-156 569-509 651-887 23-105 23-331 0-432-53-240-177-460-366-651-174-175-277-247-738-512-177-102-322-189-322-193s104-188 231-407l231-400 46 28c26 15 360 207 742 428l695 402v1282 1282l-1105 639c-608 351-1107 638-1110 638s-502-287-1110-638z"/><path d="m2833 3300c-82-12-190-48-282-95-73-36-637-358-648-369-3-3 580-1022 592-1034 5-5 596 338 673 391 100 69 220 197 260 280 82 167 76 324-19 507-95 184-233 291-411 320-70 11-89 11-165 0z"/>-->
+<!--                            </g>-->
+                            </svg> <span class="h4 font-weight-bold align-self-center mb-0 ml-auto">CarRental</span>
+                        </a>
+                    </div>
+                    <div class="navbar-header h4 mb-0 text-center h-100 collapse-menu-bar">
+                        <a href="#" class="sidebarCollapse" id="collapse"><i class="icon-menu"></i></a>
+                    </div>
+
+
+                    <div class="navbar-right ml-auto h-100">
+                        <ul class="ml-auto p-0 m-0 list-unstyled d-flex top-icon h-100">
+                            <li class="d-inline-block align-self-center  d-block d-lg-none">
+                                <a href="#" class="nav-link mobilesearch" data-toggle="dropdown" aria-expanded="false"><i class="icon-magnifier h4"></i>
+                                </a>
+                            </li>
+
+
+
+                            <li class="dropdown user-profile align-self-center d-inline-block">
+                                <a href="#" class="nav-link py-0" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="media">
+<!--                                        <img src="{% static 'dist/images/author.jpg' %}" alt="" class="d-flex img-fluid rounded-circle" width="29">-->
+                                        <div class="d-flex img-fluid rounded-circle" > <span class="icon-settings mr-2 h6 mb-0"></span> Settings </div>
+                                    </div>
+                                </a>
+
+                                <div class="dropdown-menu border dropdown-menu-right p-0">
+                                    <a href="/edit_profile/" class="dropdown-item px-2 align-self-center d-flex">
+                                        <span class="icon-pencil mr-2 h6 mb-0"></span> Edit Profile</a>
+
+                                    <a href="/logout/" class="dropdown-item px-2 text-danger align-self-center d-flex">
+                                        <span class="icon-logout mr-2 h6  mb-0"></span> Sign Out</a>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- END: Header-->
+
+        <!-- START: Main Menu-->
+        <div class="sidebar">
+            <div class="site-width">
+
+                <!-- START: Menu-->
+                <ul id="side-menu" class="sidebar-menu">
+                    <li class="dropdown"><a href="#"><i class="icon-home mr-1"></i> Dashboard</a>
+                        <ul>
+                            <li class="active"><a href="/admin_index/"><i class="icon-rocket"></i> Dashboard</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+
+                        </ul>
+
+
+                    </li>
+                    <li class="dropdown"><a href="#"><i class="icon-cursor mr-1"></i> ADMIN</a>
+                        <ul>
+                            <li class="dropdown"><a href="#"><i class="icon-menu"></i>Tables</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/car/"><i class=""></i> Car</a></li>
+                                    <li><a href="/company/"><i class="icon-layers"></i> Company</a></li>
+                                    <li><a href="/location/"><i class="icon-docs"></i> Location</a></li>
+                                    <li><a href="/user_tabel/"><i class="icon-wallet"></i> User</a></li>
+                                    <li><a href="/booking/"><i class="icon-wallet"></i> Booking</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                <!-- END: Menu-->
+                <ol class="breadcrumb bg-transparent align-self-center m-0 p-0 ml-auto">
+                    <li class="breadcrumb-item"><a href="#">Application</a></li>
+                    <li class="breadcrumb-item active">edit Company</li>
+                </ol>
+            </div>
+        </div>
+        <!-- END: Main Menu-->
+
+        <!-- START: Main Content-->
+        <main>
+            <div class="container-fluid site-width">
+                <!-- START: Breadcrumbs-->
+                <div class="row ">
+                    <div class="col-12  align-self-center">
+                        <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                            <div class="w-sm-100 mr-auto"><h4 class="mb-0">Edit Company</h4></div>
+
+                            <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item">Form</li>
+                                <li class="breadcrumb-item active"><a href="#">Edit Company</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Breadcrumbs-->
+
+                <!-- START: Card Data-->
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Insert Company</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <form class="needs-validation" method="POST" action="/update_company/{{pc.company_id}}" >
+
+                                                    {% csrf_token %}
+                                                <div class="form-row">
+
+                                                    <div class="col-md-4 mb-3">
+                                                        <label>Enter Company Name</label>
+                                                        <input type="text" class="form-control" name="company_name"  value="{{pc.company_name}}" placeholder="Company name">
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <input class="btn btn-primary" type="submit"></input>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- END: Card DATA-->
+            </div>
+        </main>
+        <!-- END: Content-->
+
+
+
+        <!-- START: Footer-->
+
+        <!-- END: Footer-->
+
+
+        <!-- START: Back to top-->
+        <a href="#" class="scrollup text-center">
+            <i class="icon-arrow-up"></i>
+        </a>
+        <!-- END: Back to top-->
+
+        <!-- START: Template JS-->
+        <script src="{% static 'dist/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/moment/moment.js' %}"></script>
+        <script src="{% static 'dist/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+        <!-- END: Template JS-->
+
+        <!-- START: APP JS-->
+        <script src="{% static 'dist/js/app.js' %}"></script>
+        <!-- END: APP JS-->
+    </body>
+    <!-- END: Body-->
+
+<!-- Mirrored from html.designstream.co.in/pick/html/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Jan 2021 07:13:20 GMT -->
+</html>

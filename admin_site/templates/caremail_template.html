@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Booking Details
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Car model</th>
+                            <th scope="col">Model Year</th>
+                            <th scope="col">Mileage</th>
+                            <th scope="col">Fuels Type</th>
+                            <th scope="col">No Seats</th>
+                            <th scope="col">RS.</th>
+                            <th scope="col">Transmission</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">{{carmodel}}</td>
+                            <td>{{modelyear}}</td>
+                            <td>{{mileage}}</td>
+                            <td>{{fuelstype}}</td>
+                            <td>{{noseats}}</td>
+                            <td>{{cost}}</td>
+                            <td>{{transmission}}</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>         
+            </div>
+        </div>
+    </div>
+</body>
+</html>

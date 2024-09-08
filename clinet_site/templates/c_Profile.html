@@ -1,0 +1,187 @@
+{% extends 'c_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+	<!-- main content -->
+	<main class="main">
+		<div class="container">
+			<div class="row row--grid">
+				<!-- breadcrumb -->
+				<div class="col-12">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item"><a href="index.html">Home</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">My account</li>
+					</ul>
+				</div>
+				<!-- end breadcrumb -->
+
+				<!-- title -->
+				<div class="col-12">
+					<div class="main__title main__title--page">
+						<h1>My account</h1>
+					</div>
+				</div>
+				<!-- end title -->
+			</div>
+
+			<div class="row row--grid">
+				<div class="col-12">
+					
+
+					<!-- content tabs -->
+					<div class="tab-content">
+					
+						<div class="tab-pane fade show active" id="tab-1" role="tabpanel">
+							<div class="row row--grid">
+								<div class="col-12 col-lg-6">
+									<form  class="sign__form sign__form--profile">
+										
+										<div class="row">
+											<div class="col-12">
+												<h4 class="sign__title">Profile details</h4>
+											</div>
+											<div class="col-12">
+												<div class="sign__group">
+													<h4 class="sign__label"> Dl Number :- {{u_details.dl_number}}</h4>
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="sign__group">
+													<label class="sign__label" for="firstname">First Name :-</label>
+													<label class="sign__label" for="firstname">{{u_details.first_name}}</label>
+												</div>
+											</div>
+
+											<div class="col-12">
+												<div class="sign__group">
+													<label class="sign__label" for="Lastname">Last Name :-</label>
+													<label class="sign__label" for="Lastname">{{u_details.last_name}}</label>
+												</div>
+											</div>
+
+											<div class="col-12 ">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">Email :-</label>
+													<label class="sign__label" for="lastname">{{u_details.users_email}}</label>
+												</div>
+											</div>
+											<div class="col-12 ">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">Phone Number :-</label>
+													<label class="sign__label" for="lastname">{{u_details.users_phone}}</label>
+												</div>
+											</div>
+
+											<div class="col-12">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">Address :-</label>
+													<label class="sign__label" for="lastname">{{u_details.users_addres}}</label>
+												</div>
+											</div>
+											
+										</div>
+									</form>
+								</div>
+
+
+
+								<div class="col-12 col-lg-6">
+									<form action="/client/user_update/"  method="post" class="sign__form sign__form--profile">
+										{% csrf_token %}
+										<div class="row">
+											<div class="col-12">
+												<h4 class="sign__title">Profile Update</h4>
+											</div>
+
+											
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="firstname">First Name</label>
+													<input id="email" type="text" name="first_name" class="sign__input" value="{{u_details.first_name}}">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="Lastname">Last name</label>
+													<input id="firstname" type="text" name="last_name" class="sign__input" value="{{u_details.last_name}}">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">Address</label>
+													<input id="lastname" type="text" name="users_addres" class="sign__input" value="{{u_details.users_addres}}">
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button class="sign__btn" type="submit"><span>Save</span></button>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!-- end details form -->
+
+								<!-- password form -->
+								<!-- <div class="col-12 col-lg-6">
+									<form action="#" class="sign__form sign__form--profile">
+										<div class="row">
+											<div class="col-12">
+												<h4 class="sign__title">Change password</h4>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="oldpass">Old password</label>
+													<input id="oldpass" type="password" name="oldpass" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="newpass">New password</label>
+													<input id="newpass" type="password" name="newpass" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="confirmpass">Confirm new password</label>
+													<input id="confirmpass" type="password" name="confirmpass" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="select">Select</label>
+													<select name="select" id="select" class="sign__select">
+														<option value="0">Option</option>
+														<option value="1">Option 2</option>
+														<option value="2">Option 3</option>
+														<option value="3">Option 4</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button class="sign__btn" type="button"><span>Change</span></button>
+											</div>
+										</div>
+									</form>
+								</div> -->
+								<!-- end password form -->
+							</div>
+						</div>
+
+						
+					</div>
+					<!-- end content tabs -->
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- end main content -->
+
+    {% endblock %}

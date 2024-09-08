@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <!-- START: Head-->
+
+<!-- Mirrored from html.designstream.co.in/pick/html/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Jan 2021 07:13:20 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <title>Car Rental</title>
+        <link rel="shortcut icon" href="{% static 'dist/images/favicon.ico' %}" />
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <!-- START: Template CSS-->
+        <link rel="stylesheet" href="{% static 'dist/vendors/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/jquery-ui/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/jquery-ui/jquery-ui.theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/simple-line-icons/css/simple-line-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/vendors/flags-icon/css/flag-icon.min.css' %}">
+
+        <!-- END Template CSS-->
+
+        <!-- START: Custom CSS-->
+        <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
+        <!-- END: Custom CSS-->
+    </head>
+    <!-- END Head-->
+
+    <!-- START: Body-->
+    <body id="main-container" class="default">
+        <!-- START: Pre Loader-->
+        <div class="se-pre-con">
+            <div class="loader"></div>
+        </div>
+        <!-- END: Pre Loader-->
+
+        <!-- START: Header-->
+        <div id="header-fix" class="header fixed-top">
+            <div class="site-width">
+                <nav class="navbar navbar-expand-lg  p-0">
+                    <div class="navbar-header  h-100 h4 mb-0 align-self-center logo-bar text-left">
+                        <a href="index.html" class="horizontal-logo text-left">
+                            <svg height="20pt" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512" width="20pt" xmlns="http://www.w3.org/2000/svg">
+<!--                            <g transform="matrix(.1 0 0 -.1 0 512)" fill="#1e3d73">-->
+<!--                            <path d="m1450 4481-1105-638v-1283-1283l1106-638c1033-597 1139-654 1139-619 0 4-385 674-855 1489-470 814-855 1484-855 1488 0 8 1303 763 1418 822 175 89 413 166 585 190 114 16 299 13 408-5 100-17 231-60 314-102 310-156 569-509 651-887 23-105 23-331 0-432-53-240-177-460-366-651-174-175-277-247-738-512-177-102-322-189-322-193s104-188 231-407l231-400 46 28c26 15 360 207 742 428l695 402v1282 1282l-1105 639c-608 351-1107 638-1110 638s-502-287-1110-638z"/><path d="m2833 3300c-82-12-190-48-282-95-73-36-637-358-648-369-3-3 580-1022 592-1034 5-5 596 338 673 391 100 69 220 197 260 280 82 167 76 324-19 507-95 184-233 291-411 320-70 11-89 11-165 0z"/>-->
+<!--                            </g>-->
+                            </svg> <span class="h4 font-weight-bold align-self-center mb-0 ml-auto">CarRental</span>
+                        </a>
+                    </div>
+                    <div class="navbar-header h4 mb-0 text-center h-100 collapse-menu-bar">
+                        <a href="#" class="sidebarCollapse" id="collapse"><i class="icon-menu"></i></a>
+                    </div>
+
+
+                    <div class="navbar-right ml-auto h-100">
+                        <ul class="ml-auto p-0 m-0 list-unstyled d-flex top-icon h-100">
+                            <li class="d-inline-block align-self-center  d-block d-lg-none">
+                                <a href="#" class="nav-link mobilesearch" data-toggle="dropdown" aria-expanded="false"><i class="icon-magnifier h4"></i>
+                                </a>
+                            </li>
+
+
+
+                            <li class="dropdown user-profile align-self-center d-inline-block">
+                                <a href="#" class="nav-link py-0" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="media">
+<!--                                        <img src="{% static 'dist/images/author.jpg' %}" alt="" class="d-flex img-fluid rounded-circle" width="29">-->
+                                            <div class="d-flex img-fluid rounded-circle" > <span class="icon-settings mr-2 h6 mb-0"></span> Settings </div>
+                                    </div>
+                                </a>
+
+                                <div class="dropdown-menu border dropdown-menu-right p-0">
+                                    <a href="/edit_profile/" class="dropdown-item px-2 align-self-center d-flex">
+                                        <span class="icon-pencil mr-2 h6 mb-0"></span> Edit Profile</a>
+
+                                    <a href="/logout/" class="dropdown-item px-2 text-danger align-self-center d-flex">
+                                        <span class="icon-logout mr-2 h6  mb-0"></span> Sign Out</a>
+                                </div>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- END: Header-->
+
+        <!-- START: Main Menu-->
+        <div class="sidebar">
+            <div class="site-width">
+
+                <!-- START: Menu-->
+                <ul id="side-menu" class="sidebar-menu">
+                    <li class="dropdown active"><a href="#"><i class="icon-home mr-1"></i> Dashboard</a>
+                        <ul>
+                            <li class="active"><a href="/admin_index/"><i class="icon-rocket"></i> Dashboard</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><i class="icon-cursor mr-1"></i> ADMIN</a>
+                        <ul>
+                            <li class="dropdown"><a href="#"><i class="icon-menu"></i>Tables</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/car/"><i class=""></i> Car</a></li>
+                                    <li><a href="/company/"><i class="icon-layers"></i> Company</a></li>
+                                    <li><a href="/location/"><i class="icon-docs"></i> Location</a></li>
+                                    <li><a href="/user_tabel/"><i class="icon-wallet"></i> User</a></li>
+                                    <li><a href="/booking/"><i class="icon-wallet"></i> Booking</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+
+
+
+
+                </ul>
+                <!-- END: Menu-->
+                <ol class="breadcrumb bg-transparent align-self-center m-0 p-0 ml-auto">
+                    <li class="breadcrumb-item"><a href="#">Application</a></li>
+                    <li class="breadcrumb-item active">edit car</li>
+                </ol>
+            </div>
+        </div>
+        <!-- END: Main Menu-->
+
+        <!-- START: Main Content-->
+        <main>
+            <div class="container-fluid site-width">
+                <!-- START: Breadcrumbs-->
+                <div class="row ">
+                    <div class="col-12  align-self-center">
+                        <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                            <div class="w-sm-100 mr-auto"><h4 class="mb-0">edit car</h4></div>
+
+                            <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item">Form</li>
+                                <li class="breadcrumb-item active"><a href="#">edit car</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Breadcrumbs-->
+
+                <!-- START: Card Data-->
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Custom styles</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <form class="needs-validation" method="POST" action="/update_car/{{pd.car_id}}"  enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <div class="form-row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label>Reg_number</label>
+                                                        <input type="text" class="form-control" name="reg_number" placeholder="First name" value="{{pd.reg_number}}" >
+
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label>Model Name</label>
+                                                        <input type="text" class="form-control" name="model_name" placeholder="Enter model Name" value="{{pd.model_name}}" >
+
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label>Img_car</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                            </div>
+                                                            <input type="file" class="form-control" name="img_car" placeholder="Enter car image" aria-describedby="inputGroupPrepend" value="{{pd.img_car}}">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Model Year</label>
+                                                        <input type="text" class="form-control" name="model_year"  placeholder="Enter model year" value="{{pd.model_year}}">
+
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label>Available flag</label>
+                                                        <select name="available_flag" class="form-control" placeholder=" Available">
+                                                            <option value="0" {% if pd.available_flag == 0 %} selected {%endif%}>OFF</option>
+                                                            <option value="1" {% if pd.available_flag == 1 %} selected {%endif%}>ON</option>
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control" name="available_flag" placeholder="Enter flag" value="{{pd.available_flag}}"> -->
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Mileage</label>
+                                                        <input type="text" class="form-control" name="mileage" placeholder="Enter milege" value="{{pd.mileage}}">
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Fuels Type</label>
+                                                        <select name="fuels_type" class="form-control" placeholder="Enter No. of Seats" >
+                                                            <option value="Petrol" {%if pd.fuels_type == "Petrol" %} selected {% endif %}>Petrol</option>
+                                                            <option value="Diesel" {%if pd.fuels_type == "Diesel" %} selected {% endif %}>Diesel</option>
+                                                            <option value="CNG" {%if pd.fuels_type == "CNG" %} selected {% endif %}>CNG</option>
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control" name="fuels_type" placeholder="Enter fuel type" value="{{pd.fuels_type}}"> -->
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>NO of Seats</label>
+                                                        <select name="no_seats" class="form-control" placeholder="Enter No. of Seats">
+                                                            <option value="4" 
+                                                            {% if pd.no_seats == 4 %} selected {%endif%}
+                                                             >4 Seats</option>
+                                                            <option value="5"
+                                                            {% if pd.no_seats == 5 %} selected {%endif%}
+                                                            >5 Seats</option>
+                                                            <option value="6"
+                                                            {% if pd.no_seats == 6 %} selected {%endif%}
+                                                            >6 Seats</option>
+                                                            <option value="7"
+                                                            {% if pd.no_seats == 7 %} selected {%endif%}
+                                                            >7 Seats</option>
+                                                            <option value="8"
+                                                            {% if pd.no_seats == 8 %} selected {%endif%}
+                                                            >8 Seats</option>
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control" name="no_seats" placeholder="Enter no of seats" value="{{pd.no_seats}}"> -->
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Cost</label>
+                                                        <input type="text" class="form-control" name="cost" placeholder="Enter Cost" value="{{pd.cost}}">
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Car Type</label>
+                                                        <select name="car_type" class="form-control" placeholder="Enter Car Type">
+                                                            <option value="HatchBack"
+                                                            {% if pd.car_type == 'HatchBack' %} selected {% endif%}
+                                                            >HatchBack</option>
+                                                            <option value="MUV"
+                                                            {% if pd.car_type == 'MUV' %} selected {% endif%}
+                                                            >MUV</option>
+                                                            <option value="Sedan"
+                                                            {% if pd.car_type == 'Sedan' %} selected {% endif%}
+                                                            >Sedan</option>
+                                                            <option value="SUV"
+                                                            {% if pd.car_type == 'SUV' %} selected {% endif%}
+                                                            >SUV</option>
+                                                        </select>
+
+                                                        <!-- <input type="text" class="form-control" name="car_type"  placeholder="Enter car Type" value="{{pd.car_type}}"> -->
+                                                    </div>
+                                                   <div class="col-md-6 mb-3">
+                                                        <label>Transmission</label>
+                                                        <select name="transmission" class="form-control" placeholder="Enter company id">
+                                                            <option value="Manual"
+                                                            {% if pd.transmission == "Manual" %} selected {%endif%}
+                                                            >Manual</option>
+                                                            <option value="Automatic"
+                                                            {% if pd.transmission == "Automatic" %} selected {%endif%}
+                                                            >Automatic</option>
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control"  name="transmission" placeholder="Enter Transmission" value="{{pd.transmission}}"> -->
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Refund Price</label>
+                                                        <input type="text" class="form-control" value="{{ pd.refund_amt }}" name="refund_amt" placeholder="Enter Refund Price" required>
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>Pick & Drop Charge</label>
+                                                        <input type="text" class="form-control"  name="pick_drop_charge" value="{{ pd.pick_drop_charge }}" placeholder="Enter Pick & Drop Charge" required>
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label>company Id</label>
+                                                        <select name="company_id" class="form-control" placeholder="Enter company id" >
+<!--                                                            <option>hhh</option>-->
+                                                            {% for data in p %}
+
+                                                            <option value="{{data.company_id}}"
+                                                            {% if data.company_id == pd.company_id.company_id %} selected {% endif %}
+                                                            >{{ data.company_name }}</option>
+                                                            {% endfor %}
+                                                        </select>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <input class="btn btn-primary" type="submit">update</input>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- END: Card DATA-->
+            </div>
+        </main>
+        <!-- END: Content-->
+
+
+
+        <!-- START: Footer-->
+
+        <!-- END: Footer-->
+
+
+        <!-- START: Back to top-->
+        <a href="#" class="scrollup text-center">
+            <i class="icon-arrow-up"></i>
+        </a>
+        <!-- END: Back to top-->
+
+        <!-- START: Template JS-->
+        <script src="{% static 'dist/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/moment/moment.js' %}"></script>
+        <script src="{% static 'dist/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'dist/vendors/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+        <!-- END: Template JS-->
+
+        <!-- START: APP JS-->
+        <script src="{% static 'dist/js/app.js' %}"></script>
+        <!-- END: APP JS-->
+    </body>
+    <!-- END: Body-->
+
+<!-- Mirrored from html.designstream.co.in/pick/html/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Jan 2021 07:13:20 GMT -->
+</html>

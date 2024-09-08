@@ -1,0 +1,191 @@
+
+{% extends 'c_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+<!-- main content -->
+	<main class="main">
+		<div class="container">
+			<div class="row row--grid">
+				<!-- breadcrumb -->
+				<div class="col-12">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item"><a href="index.html">Home</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">My account</li>
+					</ul>
+				</div>
+				<!-- end breadcrumb -->
+
+				<!-- title -->
+				<div class="col-12">
+					<div class="main__title main__title--page">
+						<h1>My account</h1>
+					</div>
+				</div>
+				<!-- end title -->
+			</div>
+
+			<div class="row row--grid">
+				<div class="col-12">
+					<div class="profile">
+						<!-- tabs nav -->
+						<ul class="nav nav-tabs profile__tabs" id="profile__tabs" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a >My listing</a>
+							</li>
+
+							<!-- <li class="nav-item" role="presentation">
+								<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Favorites</a>
+							</li>
+
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Settings</a>
+							</li>
+
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">Billing</a>
+							</li> -->
+						</ul>
+						<!-- end tabs nav -->
+					</div>
+
+					<!-- content tabs -->
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="tab-1" role="tabpanel">
+							<div class="row row--grid">
+								<div class="col-12">
+									<!-- cart -->
+									<div class="cart">
+										<div class="cart__table-wrap">
+											<div class="cart__table-scroll">
+												<table class="cart__table">
+													<thead>
+														<tr>
+															<th style="border: 1px dotted; padding: 12px;" >booking id</th>
+															<th style="border: 1px dotted; padding: 12px;" >car Name</th>
+															<th style="border: 1px dotted; padding: 12px;" >car Image</th>
+															<th style="border: 1px dotted; padding: 12px;" >pick Date</th>
+															<th style="border: 1px dotted; padding: 12px;" >Drop Date</th>
+															<th style="border: 1px dotted; padding: 12px;" >pick location</th>
+															<th style="border: 1px dotted; padding: 12px;" >Drop Location</th>
+															<th style="border: 1px dotted; padding: 12px;" >Total </th>
+<!--															 <th style="border: 1px dotted; padding: 12px;" >Booking Status</th>-->
+															 <th style="border: 1px dotted; padding: 33px;" >Booking Status</th>
+														</tr>
+													</thead>
+
+													<tbody>
+														{% for b in booking %}
+														<tr 
+														{% if b.payment_status == 2 %}
+															style="border: 1px solid; border: aliceblue;background: #f98b88;"
+														{% else %}
+															style="border: 1px solid;"
+														{% endif %}
+
+														>
+															
+															<td style="border: 1px dotted;padding: 12px; " >{{b.booking_id}}</td>
+															<td style="border: 1px dotted;padding: 12px; " ><a href="car.html">{{b.car_id.model_name}}</a></td>
+															<td style="border: 1px dotted; padding: 12px;" >
+																<div class="cart__img">
+																	<img src="{% static '/image/'%}{{b.car_id.img_car}}" alt="">
+																</div>
+															</td >
+															<td style="border: 1px dotted;padding: 12px; " >{{ b.from_date }}  </td>
+															<td style="border: 1px dotted;padding: 12px; " > {{ b.return_date }} </td>
+															<td style="border: 1px dotted;padding: 12px; " > {{ b.pickup_location.street}}-{{ b.pickup_location.area}} - {{ b.pickup_location.city }} </td>
+															<td style="border: 1px dotted;padding: 12px; " > {{b.drop_location.street}} - {{ b.pickup_locationdrop_location.area}} - {{b.drop_location.city }} </td>
+															<td style="border: 1px dotted;padding: 12px; " ><span class="cart__price">Rs.{{ b.amount}}</span></td>
+<!--															 <td style="border: 1px dotted;padding: 12px; " >  pendding  </td>-->
+															{% if b.payment_status == 0 %}
+															<td style="padding: 10px; " >
+																<a href="/client/payment/{{b.booking_id}}/" class="car__more" ><span style="position: absolute; color:white;"> Book Now </span> </a>
+															</td>
+															 {% elif b.payment_status == 1%}
+															 <!-- <td style="padding: 10px; font-size: 15px; text-align:center;" class="car__more" >
+																<a href="/client/bookingdetail/{{b.booking_id}}/">
+																	view Details
+																</a>
+																</td> -->
+
+																<td style="padding: 10px; " >
+																	<a href="/client/bookingdetail/{{b.booking_id}}/" class="car__more" ><span style="position: absolute; color:white;"> View Details </span> </a>
+																</td>
+															{% elif b.payment_status == 2 %}
+															<td style="padding: 10px; text-align: center;" >
+																<span style= "font-size: 18px;"> Cancelled </span> 
+															</td>
+															{% endif %}
+
+														</tr>
+														{% endfor %}
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<!-- end cart -->
+								</div>
+							</div>
+
+							
+						</div>
+
+						
+
+						
+
+						<!-- <div class="tab-pane fade" id="tab-4" role="tabpanel">
+							<div class="row row--grid">
+								<div class="col-12 col-md-6 col-lg-4 order-md-2 order-lg-1">
+									<div class="plan">
+										<h3 class="plan__title">Basic plan</h3>
+										<span class="plan__price">$289<span> / month</span></span>
+										<ul class="plan__list">
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Search all listings</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Create wishlist</li>
+											<li class="red"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,8.29a1,1,0,0,0-1.42,0L12,10.59,9.71,8.29A1,1,0,0,0,8.29,9.71L10.59,12l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L13.41,12l2.3-2.29A1,1,0,0,0,15.71,8.29Zm3.36-3.36A10,10,0,1,0,4.93,19.07,10,10,0,1,0,19.07,4.93ZM17.66,17.66A8,8,0,1,1,20,12,7.95,7.95,0,0,1,17.66,17.66Z"/></svg> See seller contact</li>
+											<li class="red"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,8.29a1,1,0,0,0-1.42,0L12,10.59,9.71,8.29A1,1,0,0,0,8.29,9.71L10.59,12l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L13.41,12l2.3-2.29A1,1,0,0,0,15.71,8.29Zm3.36-3.36A10,10,0,1,0,4.93,19.07,10,10,0,1,0,19.07,4.93ZM17.66,17.66A8,8,0,1,1,20,12,7.95,7.95,0,0,1,17.66,17.66Z"/></svg> Full listing info</li>
+										</ul>
+										<a href="#plan-modal" class="plan__btn open-modal"><span>Select plan</span></a>
+									</div>
+								</div>
+
+								<div class="col-12 col-lg-4 order-md-1 order-lg-2">
+									<div class="plan plan--active">
+										<h3 class="plan__title">Regular</h3>
+										<span class="plan__price">$389<span> / month</span></span>
+										<ul class="plan__list">
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Search all listings</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Create wishlist</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> See seller contact</li>
+											<li class="red"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,8.29a1,1,0,0,0-1.42,0L12,10.59,9.71,8.29A1,1,0,0,0,8.29,9.71L10.59,12l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L13.41,12l2.3-2.29A1,1,0,0,0,15.71,8.29Zm3.36-3.36A10,10,0,1,0,4.93,19.07,10,10,0,1,0,19.07,4.93ZM17.66,17.66A8,8,0,1,1,20,12,7.95,7.95,0,0,1,17.66,17.66Z"/></svg> Full listing info</li>
+										</ul>
+										<button class="plan__btn" type="button"><span>Current plan</span></button>
+									</div>
+								</div>
+
+								<div class="col-12 col-md-6 col-lg-4 order-md-3 order-lg-3">
+									<div class="plan">
+										<h3 class="plan__title">Premium</h3>
+										<span class="plan__price">$489<span> / month</span></span>
+										<ul class="plan__list">
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Search all listings</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Create wishlist</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> See seller contact</li>
+											<li class="green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/></svg> Full listing info</li>
+										</ul>
+										<a href="#plan-modal" class="plan__btn open-modal"><span>Select plan</span></a>
+									</div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+					<!-- end content tabs -->
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- end main content -->
+    {% endblock %}

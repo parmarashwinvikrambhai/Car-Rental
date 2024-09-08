@@ -1,0 +1,58 @@
+.sign__group-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 30px;
+}
+
+
+.sign__group i {
+    visibility: hidden;
+    position: absolute;
+    top: 47px;
+    right: 10px;
+}
+.sign__group.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+  
+.sign__group.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.sign__group small {
+    color: #e74c3c;
+    position: absolute;
+    bottom: -24px;
+    left: 10px;
+    visibility: hidden;
+}
+
+.sign__group.error small {
+    visibility: visible;
+}
+
+.sign__group.success input {
+    border-color: #2ecc71;
+}
+  
+.sign__group.error input {
+    border-color: #e74c3c;
+}
+
+.sign__form{
+    padding: 20px 40px !important;
+}
+  
+input[type="submit"]{
+    border: none;
+}
+  
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/forgot.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="{% static 'icon/icons8-car-rental-32.png' %}" sizes="32x32">
+	<link rel="apple-touch-icon" href="{% static 'icon/icons8-car-rental-32.png' %}">
+
+	<meta name="description" content="Car rental">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>HireCar</title>
+
+</head>
+<body>
+	<!-- main content -->
+	<main class="main main--sign" data-bg="{% static 'img/bg/bg.png' %}">
+		<!-- authorization form -->
+		<div class="sign">
+			<div class="sign__content">
+				<form action="/client/user_send/"  method="POST" class="sign__form">
+					{% csrf_token %}
+					<a href="index.html" class="sign__logo">
+						<span style="font-size: xx-large; color: #189cf4;">
+							H<span style="color: black;">ire</span>
+						</span> 
+						<span style="font-size: xx-large;color: #189cf4;">
+							C<span style="color: black;" >ar</span>
+						</span> 
+						<!-- <img src="{% static 'img/logo.svg' %}" alt=""> -->
+					</a>
+
+					<div class="sign__group">
+						<input type="email" name="email" class="sign__input" placeholder="Email">
+					</div>
+
+					<!-- <div class="sign__group sign__group--checkbox">
+						<input id="remember" name="remember" type="checkbox">
+						<label for="remember">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+					</div> -->
+					{% for data in messages%}
+						 <p style="color : red;">
+						  {{ data }}
+						 </p>
+  
+						{% endfor %}
+					<button class="sign__btn" type="submit"><span>Send</span></button>
+
+					<span class="sign__text" style="text-align: center; margin-top: 0px;">OTP is sent to your Email</span>
+				</form>
+			</div>
+		</div>
+		<!-- end authorization form -->
+	</main>
+	<!-- end main content -->
+
+	<!-- JS -->
+	<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js/splide.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/select2.min.js' %}"></script>
+	<script src="{% static 'js/smooth-scrollbar.js'%}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+<!-- Mirrored from dmitryvolkov.me/demo/waydex/forgot.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Apr 2022 07:09:10 GMT -->
+</html>

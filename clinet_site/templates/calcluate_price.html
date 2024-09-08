@@ -1,0 +1,38 @@
+{% extends 'car_details.html' %}
+{% load static %}
+{% block cal_block %}
+<span class="offer__title">Lease terms</span>
+						<ul class="offer__list">
+							<li>
+								<span class="offer__list-name">Pick up Date and Time </span>
+								<span class="offer__list-value">{{pick_date}} </span>
+							</li>
+							<li>
+								<span class="offer__list-name">Drop Date and Time</span>
+								<span class="offer__list-value offer__list-value--dark">{{drop_date}}</span>
+							</li>
+							<li>
+								<span class="offer__list-name">Number Of Days You Car</span>
+								<span class="offer__list-value offer__list-value--dark">{{no_days}}</span>
+							</li>
+							<li>
+								<span class="offer__list-name" style="color: #0064f9;font-size: 19px;">Day payment</span>
+								<span class="offer__list-value offer__list-value--dark" style="color: #000000;font-size: 19px;" >RS{{prince_uers_req}}</span>
+							</li>
+							<li>
+								<span class="offer__list-name" style="color: #0064f9;font-size: 19px;">Delivery & pickup charge</span>
+								<span class="offer__list-value"style="color: #000000;font-size: 19px;" >Rs.{{Delivery}}</span>
+							</li>
+							<li>
+								<span class="offer__list-name" style="color: #0064f9;font-size: 19px;">Refundable security deposit</span>
+								<span class="offer__list-value"style="color: #000000;font-size: 19px;">Rs.{{deposit}}</span>
+							</li>
+						</ul>
+						<span class="offer__title">Total</span>
+						<div class="offer__wrap">
+							<span class="offer__price">Rs.{{total}} <sub></sub></span>
+							<!-- <button class="offer__favorite" type="button" aria-label="Add to favori	te"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg></button> -->
+							<a href="#rent-modal" class="offer__rent"><span>Rent now</span></a>
+                            <!-- <a href="car.html" class="car__more"><span>Rent now</span></a> -->
+						</div>
+                        {% endblock %}

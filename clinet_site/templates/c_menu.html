@@ -1,0 +1,12 @@
+{% load static %}
+
+<!-- <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu"> -->
+    {% for o in comp %}
+    <li>
+        <a href="/client/car_list_comp/{{o.company_id}}/">{{o.company_name}}</a>
+    </li>
+    <!-- <li><a href="cars2.html">Explore two</a></li>
+    <li><a href="cars3.html">Explore three</a></li>
+    <li><a href="car.html">Car details</a></li> -->
+    {%endfor%}
+<!-- </ul> -->

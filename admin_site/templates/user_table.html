@@ -1,0 +1,98 @@
+{% extends 'admin_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+<!-- START: Main Content-->
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Breadcrumbs-->
+        <div class="row ">
+            <div class="col-12  align-self-center">
+                <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                    <div class="w-sm-100 mr-auto"><h4 class="mb-0">User</h4></div>
+
+                    <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Table</li>
+                        <li class="breadcrumb-item active"><a href="#">User table</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- END: Breadcrumbs-->
+
+        <!-- START: Card Data-->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header  justify-content-between align-items-center">                               
+                        <h4 class="card-title">User Table</h4>
+                    </div>
+                    <!-- <a href="#"  class="btn btn-primary" style="width: 27%;margin: 8px;margin-left: 2%;" >Insert Data</a> -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display table dataTable table-striped table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Dl number</th>
+                                        <th>Dl Image</th>
+                                        <th>First Name</th>
+                                        <th>last Name</th>
+                                        <th>E-mail</th>
+                                        <th>Verify User</th>
+                                        <th>Address</th>
+                                        <th>Phone number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in user %}
+                                    <tr>
+                                        <td>{{ i.users_id }}</td>
+                                        <td>{{ i.dl_number }}</td>
+                                        <td><img src="{% static '/image/'%}{{i.dl_image}}" width="238px" /> </td>
+                                        <td>{{ i.first_name }}</td>
+                                        <td>{{ i.last_name }}</td>
+                                        <td>{{ i.users_email }}</td>
+                                        <td>{% if i.is_verify == 0 %}
+                                            <a href="/verify_accept/{{i.users_id}}/"><span class="badge badge-success text-white">Accept </span></a>
+                                            <br>
+                                            <a href="/verify_reject/{{i.users_id}}/"><span class="badge badge-danger text-white">Reject </span></a>
+                                            {% elif i.is_verify == 1 %}
+                                              <i class="fas  h5 mr-2 fa-user-check" style="width: 192px; display: flex; justify-content: space-around;"><span style="color: green;">Verified User</span></i>
+                                            {% elif i.is_verify == 2 %}
+                                              <i class="fas  h5 mr-2 fa-user-times" style="width: 192px; gap : 10px; display: flex; justify-content: space-between;"><span style="color: red;">Not Verified User</span></i>
+                                                
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ i.users_addres }}</td>
+                                        <td>{{ i.users_phone }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Dl number</th>
+                                        <th>Dl Image</th>
+                                        <th>First Name</th>
+                                        <th>last Name</th>
+                                        <th>E-mail</th>
+                                        <th>Address</th>
+                                        <th>Phone number</th>
+                                    </tr>
+                                </tfoot> -->
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+
+            </div>                  
+        </div>
+        <!-- END: Card DATA-->
+    </div>
+</main>
+<!-- END: Content-->
+
+{% endblock %}

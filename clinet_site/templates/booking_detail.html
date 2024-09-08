@@ -1,0 +1,114 @@
+{% extends 'c_header_footer.html' %}
+{% load static %}
+{% block conten %}
+
+<!-- main content -->
+<main class="main">
+	<div class="container">
+		<section class="row row--grid">
+			<!-- breadcrumb -->
+			
+
+			<!-- end breadcrumb -->
+
+			<!-- title -->
+			<div class="col-12">
+				<div class="main__title main__title--page">
+					<h1>Booking ID :- {{ bookingDetails.booking_id}}</h1>
+				</div>
+			</div>
+			<!-- end title -->
+
+			<!-- details -->
+			<div class="col-12 col-lg-6">
+			
+				<div class="details">
+				<span class="offer__title">Car details</span>
+				<img style="display: block; margin-left: auto; margin-right: auto; width: 30%;" src="{% static '/image/'%}{{carDetails.img_car}}" alt="">
+				
+				<ul class="offer__list">
+						<li>
+							<span class="offer__list-name">Model Name </span>
+							<span class="offer__list-value offer__list-value--dark">{{carDetails.model_name}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Fuel Type </span>
+							<span class="offer__list-value">{{carDetails.fuels_type}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Transmission</span>
+							<span class="offer__list-value">{{carDetails.transmission}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">No. of Seats</span>
+							<span class="offer__list-value">{{carDetails.no_seats}} Seats</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Register No. </span>
+							<span class="offer__list-value offer__list-value--dark">{{carDetails.reg_number}}</span>
+						</li>
+					</ul>
+
+
+					
+				</div>
+			</div>
+			<!-- end details -->
+
+			<!-- offer -->
+			<div class="col-12 col-lg-6">
+				<div class="offer">
+
+					<span class="offer__title">Booking Details</span>
+					<ul class="offer__list">
+						<li>
+							<span class="offer__list-name">Booking Id </span>
+							<span class="offer__list-value offer__list-value--dark">{{bookingDetails.booking_id}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Duration time</span>
+							<span class="offer__list-value offer__list-value--dark"> {{day}},{{hour}}h {{min}}m</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Pickup Location</span>
+							<span class="offer__list-value">{{bookingDetails.pickup_location.area}}{{bookingDetails.pickup_location.city}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Drop Location</span>
+							<span class="offer__list-value">{{bookingDetails.drop_location.area}}{{bookingDetails.drop_location.city}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Pickup Date</span>
+							<span class="offer__list-value">{{ bookingDetails.from_date}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Drop Date</span>
+							<span class="offer__list-value">{{ bookingDetails.return_date}}</span>
+						</li>
+						<li>
+							<span class="offer__list-name">Amount</span>
+							<span class="offer__list-value offer__list-value--dark">Rs. {{bookingDetails.amount}}</span>
+						</li>
+					</ul>
+					
+					<div class="offer__wrap">
+					{% if hours > 24 %}
+						<a href="/client/cancel/{{bookingDetails.booking_id}}/" style="background-color: red; opacity: unset;" class="offer__rent"><span>Cancle</span></a>
+					{% endif %}
+						
+						
+						<!-- <a href="#rent-modal" class="offer__rent open-modal"><span>Paynow</span></a> -->
+					</div>
+					
+
+					
+				</div>
+			</div>
+			<!-- end offer -->
+		</section>
+	</div>
+
+	
+</main>
+<!-- end main content -->
+    {% endblock %}
